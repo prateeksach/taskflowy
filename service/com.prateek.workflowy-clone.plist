@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.prateek.workflowy-clone</string>
+  <key>WorkingDirectory</key>
+  <string>/Users/prateek-openclaw/.openclaw/workspace/repos/workflowy-clone</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/npm</string>
+    <string>run</string>
+    <string>start</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>PORT</key>
+    <string>4184</string>
+    <key>HOST</key>
+    <string>0.0.0.0</string>
+    <key>WORKFLOWY_DB_PATH</key>
+    <string>/Users/prateek-openclaw/.local/share/workflowy-clone/workflowy.sqlite</string>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/prateek-openclaw/Library/Logs/workflowy-clone.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/prateek-openclaw/Library/Logs/workflowy-clone.err.log</string>
+</dict>
+</plist>
