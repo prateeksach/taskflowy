@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 type NodeItem = {
   id: string;
@@ -64,11 +64,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    fetchTree();
+    const initial = window.setTimeout(() => fetchTree(), 0);
     const interval = window.setInterval(() => fetchTree(true), 30000);
     const onFocus = () => fetchTree(true);
     window.addEventListener('focus', onFocus);
-    return () => { window.clearInterval(interval); window.removeEventListener('focus', onFocus); };
+    return () => { window.clearTimeout(initial); window.clearInterval(interval); window.removeEventListener('focus', onFocus); };
   }, [fetchTree]);
 
   const mutate = async (fn: () => Promise<unknown>, optimistic?: () => void, focusId?: string) => {
@@ -125,7 +125,7 @@ export default function App() {
     return list;
   }, [zoomId, byId]);
 
-  const renderNode = (node: NodeItem, depth = 0): JSX.Element => {
+  const renderNode = (node: NodeItem, depth = 0): ReactNode => {
     const kids = children.get(node.id) ?? [];
     return <div className="node-block" key={node.id} data-node-id={node.id}>
       <div className={`node-row ${selectedId === node.id ? 'selected' : ''}`} style={{ paddingLeft: depth * 24 }}>

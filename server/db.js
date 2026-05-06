@@ -83,7 +83,7 @@ export function touchUpdate(idValue, fields) {
 }
 
 export function createNode({ parentId = null, afterId = null, title = '' }) {
-  let sortOrder = 1000;
+  let sortOrder;
   if (afterId) {
     const after = getNode(afterId);
     parentId = after?.parent_id ?? parentId;
