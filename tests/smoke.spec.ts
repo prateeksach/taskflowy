@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
-test('loads seed data, edits, completes, indents, zooms, and uses cache offline', async ({ page, context }) => {
+test('loads seed data, edits, completes, indents, zooms, and uses cache offline', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByDisplayValue('Welcome to your local outliner')).toBeVisible();
-  const today = page.getByDisplayValue('Today');
+  await expect(page.locator('input[value="Welcome to your local outliner"]')).toBeVisible();
+  const today = page.locator('input[value="Today"]');
   await today.focus();
   await today.press('Enter');
   const blank = page.locator('input[placeholder="Untitled"]').last();
@@ -14,9 +14,9 @@ test('loads seed data, edits, completes, indents, zooms, and uses cache offline'
   await page.getByLabel(/Zoom Today/).click();
   await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
 
-  await context.setOffline(true);
+  await page.route('**/api/tree', (route) => route.abort());
   await page.reload();
   await expect(page.getByText(/Offline — viewing cached copy/)).toBeVisible();
-  await expect(page.getByDisplayValue('Today')).toBeDisabled();
-  await context.setOffline(false);
+  await expect(page.locator('input[value="Today"]')).toBeDisabled();
+  await page.unroute('**/api/tree');
 });

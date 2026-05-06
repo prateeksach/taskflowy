@@ -8,9 +8,8 @@
   <string>/Users/prateek-openclaw/.openclaw/workspace/repos/workflowy-clone</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/opt/homebrew/bin/npm</string>
-    <string>run</string>
-    <string>start</string>
+    <string>/opt/homebrew/bin/node</string>
+    <string>server/index.js</string>
   </array>
   <key>EnvironmentVariables</key>
   <dict>

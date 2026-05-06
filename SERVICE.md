@@ -4,7 +4,7 @@ The app includes a LaunchAgent plist at:
 
 `service/com.prateek.workflowy-clone.plist`
 
-It runs `npm run start` from the repo, with `NODE_ENV=production`, `PORT=4184`, `HOST=0.0.0.0`, and the DB outside the workspace.
+It runs `/opt/homebrew/bin/node server/index.js` from the repo, with `NODE_ENV=production`, `PORT=4184`, `HOST=0.0.0.0`, and the DB outside the workspace.
 
 ## Install/start
 
