@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Taskflowy icon">
+  <defs>
+    <linearGradient id="bg" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F7CFF"/>
+      <stop offset="1" stop-color="#22B7A0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <circle cx="18" cy="18" r="4" fill="white" opacity="0.96"/>
+  <circle cx="18" cy="32" r="4" fill="white" opacity="0.86"/>
+  <circle cx="18" cy="46" r="4" fill="white" opacity="0.76"/>
+  <path d="M28 18h19M28 32h14M28 46h20" stroke="white" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M39 28l5 5 10-12" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

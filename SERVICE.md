@@ -4,6 +4,8 @@ The app includes a LaunchAgent plist at:
 
 `service/com.prateek.workflowy-clone.plist`
 
+The legacy service label/path are intentionally retained for now (`com.prateek.workflowy-clone`, repo directory `workflowy-clone`) so an installed LaunchAgent and existing local data keep working. The launched app is branded Taskflowy.
+
 It runs `/opt/homebrew/bin/node server/index.js` from the repo, with `NODE_ENV=production`, `PORT=4184`, `HOST=0.0.0.0`, and the DB outside the workspace.
 
 ## Install/start

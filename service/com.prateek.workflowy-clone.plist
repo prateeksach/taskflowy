@@ -19,6 +19,8 @@
     <string>4184</string>
     <key>HOST</key>
     <string>0.0.0.0</string>
+    <key>TASKFLOWY_DB_PATH</key>
+    <string>/Users/prateek-openclaw/.local/share/workflowy-clone/workflowy.sqlite</string>
     <key>WORKFLOWY_DB_PATH</key>
     <string>/Users/prateek-openclaw/.local/share/workflowy-clone/workflowy.sqlite</string>
     <key>PATH</key>

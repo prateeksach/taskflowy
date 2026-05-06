@@ -13,7 +13,7 @@ type NodeItem = {
 };
 
 type CachePayload = { nodes: NodeItem[]; updatedAt?: string; cachedAt: string };
-const CACHE_KEY = 'workflowy-clone:last-tree';
+const CACHE_KEY = 'taskflowy:last-tree';
 
 const api = async <T,>(url: string, init?: RequestInit): Promise<T> => {
   const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...init });
@@ -158,6 +158,13 @@ export default function App() {
   const visibleRoot = zoomId ? (children.get(zoomId) ?? []) : (children.get(null) ?? []);
 
   return <main className="app">
+    <header className="brand" aria-label="Taskflowy">
+      <div className="brand-mark" aria-hidden="true">✓</div>
+      <div>
+        <p className="eyebrow">Personal outliner</p>
+        <h1>Taskflowy</h1>
+      </div>
+    </header>
     <div className={`status ${online ? 'online' : 'offline'}`}>{status}</div>
     <nav className="breadcrumbs">
       <button onClick={() => setZoomId(null)}>Home</button>

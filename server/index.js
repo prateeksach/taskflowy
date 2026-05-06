@@ -59,6 +59,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, host, () => {
-  console.log(`Workflowy clone listening at http://${host}:${port}/ (open http://127.0.0.1:${port}/)`);
+  console.log(`Taskflowy listening at http://${host}:${port}/ (open http://127.0.0.1:${port}/)`);
   console.log(`SQLite DB: ${DB_PATH}`);
 });

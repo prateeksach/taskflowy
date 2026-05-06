@@ -6,11 +6,14 @@ test('loads seed data, edits, completes, indents, zooms, and uses cache offline'
   const today = page.locator('input[value="Today"]');
   await today.focus();
   await today.press('Enter');
+  const title = `Smoke test ${Date.now()}`;
   const blank = page.locator('input[placeholder="Untitled"]').last();
-  await blank.fill(`Smoke test ${Date.now()}`);
-  await blank.press(process.platform === 'darwin' ? 'Meta+Enter' : 'Control+Enter');
-  await expect(blank).toHaveClass(/completed/);
-  await blank.press('Shift+Tab');
+  await blank.fill(title);
+  const created = page.locator(`input[value="${title}"]`).last();
+  await expect(created).toBeVisible();
+  await created.press(process.platform === 'darwin' ? 'Meta+Enter' : 'Control+Enter');
+  await expect(created).toHaveClass(/completed/);
+  await created.press('Shift+Tab');
   await page.getByLabel(/Zoom Today/).click();
   await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible();
 

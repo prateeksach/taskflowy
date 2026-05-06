@@ -3,7 +3,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const backupRoot = process.env.WORKFLOWY_BACKUP_DIR || '/Users/prateek-openclaw/Backups/workflowy-clone/daily';
+// Taskflowy env vars are preferred; Workflowy vars/paths remain supported for the existing local install.
+const backupRoot = process.env.TASKFLOWY_BACKUP_DIR || process.env.WORKFLOWY_BACKUP_DIR || '/Users/prateek-openclaw/Backups/workflowy-clone/daily';
 if (!fs.existsSync(backupRoot)) {
   console.error(`Backup directory not found: ${backupRoot}`);
   process.exit(1);
@@ -17,7 +18,7 @@ if (!backups.length) {
   process.exit(1);
 }
 const latest = backups.at(-1);
-const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'workflowy-restore-check-'));
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'taskflowy-restore-check-'));
 const tempDb = path.join(tempDir, 'restore.sqlite');
 fs.copyFileSync(latest, tempDb);
 const db = new Database(tempDb, { readonly: true });

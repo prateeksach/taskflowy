@@ -3,8 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 
-export const DATA_DIR = process.env.WORKFLOWY_DATA_DIR || '/Users/prateek-openclaw/.local/share/workflowy-clone';
-export const DB_PATH = process.env.WORKFLOWY_DB_PATH || path.join(DATA_DIR, 'workflowy.sqlite');
+// Prefer Taskflowy env vars while keeping the original Workflowy clone data path
+// as the default so existing local data and LaunchAgents continue to work.
+export const DATA_DIR = process.env.TASKFLOWY_DATA_DIR || process.env.WORKFLOWY_DATA_DIR || '/Users/prateek-openclaw/.local/share/workflowy-clone';
+export const DB_PATH = process.env.TASKFLOWY_DB_PATH || process.env.WORKFLOWY_DB_PATH || path.join(DATA_DIR, 'workflowy.sqlite');
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 export const db = new Database(DB_PATH);

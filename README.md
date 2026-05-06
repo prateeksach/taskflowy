@@ -1,11 +1,11 @@
-# Workflowy Clone
+# Taskflowy
 
-A first testable local Workflowy-style outliner/to-do app for Prateek. It is desktop-first, single-user, React + TypeScript + Vite in front, Node/Express + SQLite behind.
+A local, desktop-first outliner/to-do app for Prateek. Taskflowy pairs a fast React + TypeScript + Vite client with a Node/Express + SQLite API.
 
 ## Paths
 
-- Repo: `/Users/prateek-openclaw/.openclaw/workspace/repos/workflowy-clone`
-- Runtime SQLite DB: `/Users/prateek-openclaw/.local/share/workflowy-clone/workflowy.sqlite`
+- Repo: `/Users/prateek-openclaw/.openclaw/workspace/repos/workflowy-clone` (legacy directory name retained to avoid breaking the local service)
+- Runtime SQLite DB: `/Users/prateek-openclaw/.local/share/workflowy-clone/workflowy.sqlite` (legacy path retained for existing data)
 - Backups: `/Users/prateek-openclaw/Backups/workflowy-clone/daily/`
 
 ## Install and run
@@ -36,7 +36,7 @@ Open:
 
 ## Offline/cache model
 
-The server is the source of truth. The browser caches the latest loaded tree in `localStorage`. If the server/API is unavailable, the app shows an offline banner and displays the cached tree read-only. Editing is disabled offline for MVP safety. Refocus and a 30-second interval pull latest server data.
+The server is the source of truth. The browser caches the latest loaded tree in `localStorage`. If the server/API is unavailable, Taskflowy shows an offline banner and displays the cached tree read-only. Editing is disabled offline for MVP safety. Refocus and a 30-second interval pull latest server data.
 
 ## API checks
 
