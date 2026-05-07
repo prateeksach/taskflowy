@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createNode, db, DB_PATH, getNodes, reorder, seedIfEmpty, softDelete, touchUpdate } from './db.js';
+import { createNode, db, DB_PATH, getNodes, reorder, repositionNode, searchNodes, seedIfEmpty, softDelete, touchUpdate } from './db.js';
 
 seedIfEmpty();
 
@@ -22,6 +22,10 @@ app.get('/api/tree', (_req, res) => {
   const maxVersion = db.prepare('SELECT MAX(version) AS v FROM nodes').get().v ?? 0;
   const updatedAt = db.prepare('SELECT MAX(updated_at) AS u FROM nodes').get().u ?? null;
   res.json({ nodes, version: maxVersion, updatedAt, serverTime: new Date().toISOString() });
+});
+
+app.get('/api/search', (req, res) => {
+  res.json({ nodes: searchNodes(req.query.q ?? '', req.query.limit ?? 20) });
 });
 
 app.post('/api/nodes', (req, res) => {
@@ -46,6 +50,16 @@ app.post('/api/nodes/:id/move', (req, res) => {
   const node = reorder(req.params.id, direction);
   if (!node) return res.status(404).json({ error: 'Node not found' });
   res.json({ node });
+});
+
+app.post('/api/nodes/:id/reposition', (req, res) => {
+  try {
+    const node = repositionNode(req.params.id, { parentId: req.body.parentId ?? null, index: req.body.index ?? 0 });
+    if (!node) return res.status(404).json({ error: 'Node not found' });
+    res.json({ node });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 app.delete('/api/nodes/:id', (req, res) => {

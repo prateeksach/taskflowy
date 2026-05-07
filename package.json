@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "backup": "node scripts/backup.js",
     "restore-check": "node scripts/restore-check.js",
-    "smoke": "playwright test"
+    "smoke": "playwright test",
+    "screenshots": "node scripts/screenshot.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

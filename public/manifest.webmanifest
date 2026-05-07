@@ -1,0 +1,13 @@
+{
+  "name": "Taskflowy",
+  "short_name": "Taskflowy",
+  "description": "A local-first personal outliner.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fffdfa",
+  "theme_color": "#3f6df6",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

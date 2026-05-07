@@ -20,5 +20,9 @@ export default tseslint.config(
   {
     files: ['server/**/*.js', 'scripts/**/*.js'],
     languageOptions: { ecmaVersion: 2022, globals: { ...globals.node } }
+  },
+  {
+    files: ['public/sw.js'],
+    languageOptions: { ecmaVersion: 2022, globals: { ...globals.serviceworker, URL: 'readonly' } }
   }
 );
